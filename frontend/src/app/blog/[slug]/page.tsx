@@ -24,7 +24,7 @@ export default function BlogPage() {
   useEffect(() => {
     if (!blog?.id) return
 
-    api.get(`/blogs/${blog.id}/comments`).then((res: any) => {
+    api.get(`/public/blogs/${blog.id}/comments`).then((res: any) => {
       setComments(res.data)
     })
   }, [blog])
