@@ -9,7 +9,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    api.get('/blogs')
+    api.get('/public/feed')
       .then(res => {
         console.log("BLOG RESPONSE:", res.data)
         setBlogs(res.data)

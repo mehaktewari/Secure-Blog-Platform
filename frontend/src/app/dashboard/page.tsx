@@ -12,13 +12,21 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if (!token) {
-      router.push('/login')
-    } else {
-      setLoading(false)
-    }
-  }, [router])
 
+    if (!token) {
+      router.replace('/login')
+      return
+    }
+
+    api.get('/auth/me')
+      .then(() => {
+        setLoading(false)
+      })
+      .catch(() => {
+        localStorage.removeItem('token')
+        router.replace('/login')
+      })
+  }, [])
   const onSubmit = async (data: any) => {
     await api.post('/blogs', {
       ...data,

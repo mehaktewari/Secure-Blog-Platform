@@ -13,7 +13,7 @@ export default function LoginPage() {
 
     localStorage.setItem('token', res.data.access_token)
 
-    router.push('/')
+    router.push('/dashboard')
   }
 
   return (
